@@ -23,6 +23,32 @@ const fetchData = () => {
       });
     });
 };
+function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
+function checkOrientation() {
+  if (window.orientation === 0 || window.orientation === 180) {
+    // Portrait mode
+    document.getElementById("rotate-notice").style.display = "flex";
+  } else {
+    // Landscape mode
+    document.getElementById("rotate-notice").style.display = "none";
+  }
+}
+
+window.addEventListener("load", function() {
+  if (isMobileDevice()) {
+    checkOrientation();
+  }
+});
+
+window.addEventListener("orientationchange", function() {
+  if (isMobileDevice()) {
+    checkOrientation();
+  }
+});
+
 
 // Animation Timeline
 const animationTimeline = () => {
