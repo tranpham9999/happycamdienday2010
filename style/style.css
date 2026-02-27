@@ -9,7 +9,7 @@ body {
 
 .container {
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   visibility: hidden;
@@ -30,12 +30,13 @@ body {
   top: 0;
 }
 
-.container > div {
+.container>div {
   position: absolute;
   left: 0;
   right: 0;
   top: 20vh;
 }
+
 #rotate-notice {
   position: fixed;
   top: 0;
@@ -56,7 +57,7 @@ body {
   font-size: 4.5rem;
 }
 
-.one > img {
+.one>img {
   vertical-align: middle;
   margin-bottom: 10px;
   max-width: 100%;
@@ -140,26 +141,19 @@ body {
 .six .hat {
   position: absolute;
   width: 80px;
-  top: -35px;
-  left: 41.5%;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
   /* transform: scale(0.1); */
 }
 
 .baloons img {
   display: inline-block;
   position: absolute;
-}
-
-.baloons img:nth-child(even) {
-  left: -10%;
-}
-
-.baloons img:nth-child(odd) {
-  right: -10%;
-}
-
-.baloons img:nth-child(3n + 0) {
-  left: 30%;
+  width: 50px;
+  left: 50%;
+  bottom: -100px;
+  /* Giới hạn kích thước trái tim */
 }
 
 .eight svg {
@@ -248,30 +242,6 @@ body {
 }
 
 /* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
 @media screen and (max-width: 500px) {
   .container {
     width: 90%;
@@ -286,12 +256,22 @@ body {
     bottom: -38px;
   }
 
+  .five p {
+    font-size: 1.5rem;
+  }
+
   .idea-5 span {
     display: block;
+    font-size: 2rem;
   }
 
   .idea-6 span {
-    font-size: 10rem;
+    font-size: 7rem;
+  }
+
+  .six .lydia-dp {
+    max-width: 250px;
+    /* Tăng kích thước ảnh trên mobile */
   }
 
   .six .hat {

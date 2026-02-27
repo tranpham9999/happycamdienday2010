@@ -3,51 +3,46 @@ const fetchData = () => {
   fetch("customize.json")
     .then(data => data.json())
     .then(data => {
-      dataArr = Object.keys(data);
+      const dataArr = Object.keys(data);
       dataArr.map(customData => {
         if (data[customData] !== "") {
-          if (customData === "imagePath") {
-            document
-              .querySelector(`[data-node-name*="${customData}"]`)
-              .setAttribute("src", data[customData]);
-          } else {
-            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
+          const node = document.querySelector(`[data-node-name*="${customData}"]`);
+          if (node) {
+            if (customData === "imagePath") {
+              node.setAttribute("src", data[customData]);
+            } else {
+              node.innerText = data[customData];
+            }
           }
         }
 
         // Check if the iteration is over
         // Run amimation if so
-        if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
+        if (dataArr.length === dataArr.indexOf(customData) + 1) {
           animationTimeline();
-        } 
+        }
       });
     });
 };
 function isMobileDevice() {
-  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
 function checkOrientation() {
-  if (window.orientation === 0 || window.orientation === 180) {
-    // Portrait mode
-    document.getElementById("rotate-notice").style.display = "flex";
-  } else {
-    // Landscape mode
-    document.getElementById("rotate-notice").style.display = "none";
+  const rotateNotice = document.getElementById("rotate-notice");
+  if (rotateNotice && isMobileDevice()) {
+    // Kiểm tra nếu chiều cao lớn hơn chiều rộng (Màn hình dọc)
+    if (window.innerHeight > window.innerWidth) {
+      rotateNotice.style.display = "flex";
+    } else {
+      rotateNotice.style.display = "none";
+    }
   }
 }
 
-window.addEventListener("load", function() {
-  if (isMobileDevice()) {
-    checkOrientation();
-  }
-});
-
-window.addEventListener("orientationchange", function() {
-  if (isMobileDevice()) {
-    checkOrientation();
-  }
-});
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
 
 
 // Animation Timeline
@@ -56,13 +51,17 @@ const animationTimeline = () => {
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-    .split("")
-    .join("</span><span>")}</span`;
+  if (textBoxChars) {
+    textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
+      .split("")
+      .join("</span><span>")}</span>`;
+  }
 
-  hbd.innerHTML = `<span>${hbd.innerHTML
-    .split("")
-    .join("</span><span>")}</span`;
+  if (hbd) {
+    hbd.innerHTML = `<span>${hbd.innerHTML
+      .split("")
+      .join("</span><span>")}</span>`;
+  }
 
   const ideaTextTrans = {
     opacity: 0,
@@ -223,16 +222,37 @@ const animationTimeline = () => {
     )
     .staggerFromTo(
       ".baloons img",
-      2.5,
+      5, // Tăng thời gian để bay chậm và nhẹ nhàng hơn
       {
-        opacity: 0.9,
-        y: 1400
+        opacity: 0,
+        y: 0, // Bắt đầu từ vị trí CSS (bottom: -100px)
+        cycle: {
+          x: function () {
+            return (Math.random() - 0.5) * window.innerWidth;
+          },
+          scale: function () {
+            return Math.random() * 0.3 + 0.7; // Kích thước bong bóng tự nhiên hơn
+          }
+        }
       },
       {
         opacity: 1,
-        y: -1000
+        y: -window.innerHeight - 500, // Bay vọt lên trên cùng và ra khỏi hẳn màn hình
+        cycle: {
+          x: function () {
+            // Tạo độ lệch ngang nhẹ khi bay lên để giống bong bóng thật
+            return "+=" + (Math.random() * 100 - 50);
+          },
+          rotation: function () {
+            return Math.random() * 40 - 20; // Xoay nhẹ nhàng
+          },
+          delay: function () {
+            return Math.random() * 1.5; // Giãn cách thời gian xuất hiện tự nhiên
+          }
+        },
+        ease: Power1.easeInOut // Chuyển động mượt mà hơn
       },
-      0.2
+      0.1 // Giảm khoảng cách giữa các lần xuất hiện để tạo dòng chảy liên tục
     )
     .from(
       ".lydia-dp",
@@ -281,6 +301,15 @@ const animationTimeline = () => {
       0.1,
       "party"
     )
+    .to(
+      ".lydia-dp",
+      0.5,
+      {
+        scale: 1.2,
+        ease: Back.easeOut.config(1.7)
+      },
+      "party"
+    )
     .from(
       ".wish h5",
       0.5,
@@ -323,9 +352,11 @@ const animationTimeline = () => {
 
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
-  replyBtn.addEventListener("click", () => {
-    tl.restart();
-  });
+  if (replyBtn) {
+    replyBtn.addEventListener("click", () => {
+      tl.restart();
+    });
+  }
 };
 
 // Run fetch and animation in sequence

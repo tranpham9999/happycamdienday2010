@@ -9,12 +9,71 @@
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
   <link rel="stylesheet" href="style/style.css">
+  <style>
+    /* Tối ưu hiển thị cho mobile khi xoay ngang */
+    @media screen and (max-height: 450px) and (orientation: landscape) {
+      .container > div {
+        top: 10vh !important; /* Đẩy nội dung lên cao hơn để có chỗ trống */
+      }
+      .one h1 {
+        font-size: 1.5rem !important; /* Giảm cỡ chữ tiêu đề */
+        margin: 5px 0 !important;
+      }
+      .one p {
+        font-size: 0.9rem !important; /* Giảm cỡ chữ đoạn văn */
+      }
+      .five p {
+        font-size: 1.1rem !important; /* Giảm cỡ chữ phần 'Bởi vì' */
+      }
+      .five .idea-5 {
+        font-size: 1.4rem !important; /* Giảm cỡ chữ câu đặc biệt */
+        line-height: 1.2;
+      }
+      .idea-6 span {
+        font-size: 5rem !important; /* Giảm kích thước chữ S O */
+      }
+      .six {
+        top: 5vh !important; /* Đẩy nội dung lên cao hơn một chút */
+      }
+      .six .lydia-dp {
+        max-width: 180px !important; /* Tăng kích thước ảnh đại diện */
+      }
+      .six .hat {
+        width: 35px !important; /* Thu nhỏ chiếc mũ */
+        top: -25px !important;
+      }
+      .wish-hbd {
+        font-size: 1.2rem !important; /* Thu nhỏ tiêu đề chúc mừng */
+      }
+      .wish h5 {
+        font-size: 0.8rem !important; /* Thu nhỏ lời chúc chi tiết */
+      }
+      .nine p {
+        font-size: 1rem !important; /* Thu nhỏ lời nhắn cuối */
+      }
+    }
+
+    /* Đảm bảo thông báo xoay màn hình phủ kín và hiển thị trên cùng */
+    #rotate-notice {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
     <div class="one">
-      <h1 class="one">
+      <h1>
         <span data-node-name="greeting">Hey</span>
         <span data-node-name="name">Lydia</span>
       </h1>
@@ -55,39 +114,39 @@
     </div>
     <div class="seven">
       <div class="baloons">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
-        <img src="pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
+        <img src="img/favicon.png" alt="">
+        <img src="img/pngimg.com - heart_PNG51273.png" alt="">
       </div>
     </div>
     <div class="eight">
@@ -132,37 +191,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
   <script type="application/javascript" src="script/main.js"></script>
 
-  <!-- Add JavaScript for detecting mobile and orientation -->
-  <script>
-    function isMobileDevice() {
-      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    }
-
-    function checkOrientation() {
-      if (window.orientation === 0 || window.orientation === 180) {
-        // Portrait mode
-        document.getElementById("rotate-notice").style.display = "flex";
-      } else {
-        // Landscape mode
-        document.getElementById("rotate-notice").style.display = "none";
-      }
-    }
-
-    window.addEventListener("load", function() {
-      if (isMobileDevice()) {
-        checkOrientation();
-      }
-    });
-
-    window.addEventListener("orientationchange", function() {
-      if (isMobileDevice()) {
-        checkOrientation();
-      }
-    });
-  </script>
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-<script type="application/javascript" src="script/main.js"></script>
 
 </html>
